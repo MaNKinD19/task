@@ -6,6 +6,7 @@ d={}
 det={}
 def reg():
     c=0
+    f=open("Bank.txt","w+")
     acc=list(range(1000,9999))
     random.shuffle(acc)
     name=input("Enter your name :")
@@ -26,16 +27,22 @@ def reg():
     while c<3:
         bal=float(input("Enter balance amount(>5000) "))
         if bal<5000:
-            print("No ,minimum balance")
+            print("Minimum balance Required")
             c=c+1
         else:
             print("Amount credited succesfully!!!")
             break
     d.update({a:pwd})
     det.update({a:[name,mid,bal,pwd]})
+    f.write("%s\r\n"%det)
     print("Account registeed succesfully!!!")
+    f.close()
 reg()
 def dep():
+    f.open("Bank.txt","r+")
+    u=eval(f.read())
+    damt=float(input("Enter Amount"))
+    
     
 def login():
     c1=0
@@ -49,5 +56,3 @@ def login():
             print("Try again")
             c1=c1+1
 login()
-
-
