@@ -1,13 +1,15 @@
 import getpass
 import random
+f=open("Bank.txt","w+")
+f.close()
 name=''
 mid=''
 d={}
 det={}
-#getlist returns dictionary values
+#return dictionary values
 def getList(dict): 
     return dict.keys() 
-#reg performs registration
+#register function
 def reg():
     c=0
     f=open("Bank.txt","w+")
@@ -42,7 +44,7 @@ def reg():
     print("Account registeed succesfully!!!")
     f.close()
 
-#dep function deposits amount
+#deposit function
 def dep(userid):
     f.open("Bank.txt","r+")
     u=eval(f.read())
@@ -56,8 +58,7 @@ def dep(userid):
     u[userid][2]=bal    
     f.write("%s\r\n"%u)
     f.close()
-    
-    #wdraw function withdraws amount
+   #Withdrawl function 
 def wdraw(userid):
     f.open("Bank.txt","r+")
     v=eval(f.read())
@@ -73,16 +74,14 @@ def wdraw(userid):
     u[userid][2]=bal    
     f.write("%s\r\n"%u)
     f.close()
-    
-#bcheck function checks balance
+ #Balance check function   
 def bcheck(userid):
     f.open("Bank.txt","r+")
     w=eval(f.read())
     bal=r[userid][2]
     print("Balance :",bal)
     f.close()
-    
-#login perform login function
+ #Login function   
 def login():
     c1=0
     c2=0
@@ -93,36 +92,37 @@ def login():
     upwd=getpass.getpass("Enter password ")
     for i in l:
         while c1<3:
-        if uno i== det and upwd == det[i][3]:
-            print("Login succesfully")
-            break
-        else:
-            print("Try again")
+            if uno == d and upwd == d[uno]:
+                print("Login succesfully")
+                while c2<3:
+                    ch=int(input("""Enter your choice 1. Deposit
+                    2. Withdraw
+                    3. Check Balance"""))
+                    if ch==1:
+                        dep(uno)
+                    elif ch==2:
+                        wdraw(uno)
+                    elif ch==3:
+                        bcheck(uno)
+                    else:
+                        print("Invalid Choice")
+                c=c+1
+                break
+            else:
+                print("Try again")
             c1=c1+1
+        break
     
-    while c2<3:
-        ch=int(input("""Enter your choice 1. Deposit
-        2. Withdraw
-        3. Check Balance"""))
-        if ch==1:
-            dep(uno)
-        elif ch==2:
-            wdraw(uno)
-        elif ch==3:
-            bcheck(uno)
-        else:
-            print("Invalid Choice")
-            c=c+1
     
+ #Main Program   
 j='y'
-Print("**************Basic Bank Welcomes You!!!*******************")
+print("**************Basic Bank Welcomes You!!!*******************")
 while(j=='y'):
-    ch1=int(input("Enter your choice 1. register 2. Login"))
-    if ch==1:
+    ch1=int(input("Enter your choice 1. register 2. Login "))
+    if ch1==1:
         reg()
-    elif ch==2:
+    elif ch1==2:
         login()
     else:
         print("Invalid choice")
-    j=input("Do you want to continue?(y/n")
-    
+    j=input("Do you want to continue?(y/n) ")
