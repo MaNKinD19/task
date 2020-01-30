@@ -1,11 +1,11 @@
 import getpass
 import random
-f=open("Bank.txt","w+")
-f.close()
-name=''
-mid=''
+import os
 d={}
 det={}
+bal=0
+name=''
+mid=''
 #return dictionary values
 def getList(dict): 
     return dict.keys() 
@@ -46,9 +46,10 @@ def reg():
 
 #deposit function
 def dep(userid):
-    f.open("Bank.txt","r+")
+    f=open("Bank.txt","r+")
     u=eval(f.read())
     damt=float(input("Enter Amount"))
+    print(f.read())
     if damt<500 and damt>50000:
         print("Limit exceeded")
     else:
@@ -60,7 +61,7 @@ def dep(userid):
     f.close()
    #Withdrawl function 
 def wdraw(userid):
-    f.open("Bank.txt","r+")
+    f=open("Bank.txt","r+")
     v=eval(f.read())
     wamt=float(input("Enter Amount"))
     if wamt<500 and wamt>50000:
@@ -76,7 +77,7 @@ def wdraw(userid):
     f.close()
  #Balance check function   
 def bcheck(userid):
-    f.open("Bank.txt","r+")
+    f=open("Bank.txt","r+")
     w=eval(f.read())
     bal=r[userid][2]
     print("Balance :",bal)
@@ -92,12 +93,12 @@ def login():
     upwd=getpass.getpass("Enter password ")
     for i in l:
         while c1<3:
-            if uno == d and upwd == d[uno]:
+            if uno in d and upwd == d[uno]:
                 print("Login succesfully")
                 while c2<3:
                     ch=int(input("""Enter your choice 1. Deposit
                     2. Withdraw
-                    3. Check Balance"""))
+                    3. Check Balance """))
                     if ch==1:
                         dep(uno)
                     elif ch==2:
@@ -110,7 +111,7 @@ def login():
                 break
             else:
                 print("Try again")
-            c1=c1+1
+                c1=c1+1
         break
     
     
@@ -126,3 +127,4 @@ while(j=='y'):
     else:
         print("Invalid choice")
     j=input("Do you want to continue?(y/n) ")
+f.close()
