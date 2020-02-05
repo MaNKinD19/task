@@ -10,9 +10,11 @@ for(i=0;i<n;i++)
 document.write("Prime :")
 for(i=0;i<n;i++)
     {
+        if(arr[i]===2)
+            document.write(arr[i])
         for( j=2;j<arr[i];j++)
         {
-            if(arr[i]==2)
+            if(arr[i]===2)
                 document.write(arr[i])
             if(arr[i]%j===0)
             {
@@ -28,3 +30,4 @@ for(i=0;i<n;i++)
 }
 }
 a();
+
